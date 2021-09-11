@@ -1,0 +1,12 @@
+#!/bin/bash
+
+#Prerequisites: AWS CLI configured with access keys. Role to assume into profiles. List file containing all AWS accounts desired for assumption as "cxlist" or other name.
+cat cxlist | while read line;
+do
+echo
+echo [$line]
+echo
+echo role_arn = arn:aws:iam::$line:role/"RoleForAssumption"
+echo 
+echo source_profile = default
+done &>> ~/.aws/credentials
